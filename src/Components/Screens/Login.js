@@ -25,19 +25,19 @@ const Login = () => {
     }).then(res => res.json())
     .then(data => {
       if( data.error ) {
-        M.toast({ html: data.error })
+        M.toast({ html: data.error , classes: "rounded" })
       }
       else {
         localStorage.setItem("jwt" , data.token)
         localStorage.setItem("user" , JSON.stringify(data.user))
         dispatch({ type: "USER" , payload: data.user })
-        M.toast({ html: "Logged In" })
+        M.toast({ html: "Logged In" , classes: "rounded #2e7d32 green darken-3" })
         history.push("/")
       }
     })
   }
   return (
-    <div className="card_login #757575 grey darken-1 container">
+    <div className="card_login #7986cb indigo lighten-2 container">
       <div className="auth_card row container">
       <h2 className="content"> Login Here </h2>
           <div className="row input_field">
@@ -65,7 +65,7 @@ const Login = () => {
             </div>
           </div>
           <button className="waves-effect waves-light btn" onClick={ () => postData() }> Login </button><br/>
-          <small style={{ fontSize: "12px" }}> Don't Have An Account? <Link to="/signup"> Signup Here </Link> </small>
+          <small style={{ fontSize: "12px" }}> Don't Have An Account? <Link to="/signup"> <span style={{ color: "blue" }}>Signup Here</span> </Link> </small>
           {/* <a class="waves-effect waves-light btn">Signup</a> */}
       </div>
     </div>

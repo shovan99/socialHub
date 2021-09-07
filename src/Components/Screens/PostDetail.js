@@ -1,6 +1,8 @@
 import React , { useState , useEffect } from "react";
 import { useParams } from "react-router-dom"
 
+import Spinner from "../Spinner"
+
 const PostDetail = () => {
     const [post , setPost] = useState([])
     const [spin , setsSpin] = useState(true)
@@ -25,17 +27,7 @@ const PostDetail = () => {
 <>
 
     { spin == true ? (
-            <div class="preloader-wrapper small active">
-            <div class="spinner-layer spinner-green-only">
-            <div class="circle-clipper left">
-                 <div class="circle"></div>
-                 </div><div class="gap-patch">
-                 <div class="circle"></div>
-            </div><div class="circle-clipper right">
-           <div class="circle"></div>
-           </div>
-           </div>
-           </div>
+            <Spinner/>
     ) : (
         <div className="container">
     <div className="container" style={{ margin: "40px auto", display: "flex" }}>
@@ -69,9 +61,10 @@ const PostDetail = () => {
 
     <h4 style={{ margin: "auto" , wordSpacing: "2px" , fontWeight: "bold" , marginBottom: "20px" }}> Comments </h4>
 
+    { post.comments.length === 0 && <h6> No Comments Found Yet </h6> }
     { post.comments.map(comment => (
         <div className="collapsible">
-                <h6 className="collapsible-header" style={{ margin: "0px 12px" }}> <span style={{ fontWeight: "bold", marginRight: "20px" }}> {comment.postedBy.name} </span> {comment.text} </h6>
+                <h6 className="collapsible-header" style={{ margin: "0px 12px" }}> <span style={{ fontWeight: "bold", marginRight: "20px" }}> {comment.postedBy.name.toUpperCase()} </span> {comment.text} </h6>
         </div>
     )) } 
     </div>

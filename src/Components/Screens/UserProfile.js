@@ -3,6 +3,8 @@ import { UserContext } from "../../App"
 
 import { useParams } from "react-router-dom"
 
+import Spinner from "../Spinner"
+
 const Profile = () => {
   const [data, settData] = useState(null)
   const [spin , setsSpin] = useState(true)
@@ -25,17 +27,7 @@ const Profile = () => {
   return (
     <div className="container">
     { spin == true ? (
-        <div class="preloader-wrapper small active">
-    <div class="spinner-layer spinner-green-only">
-      <div class="circle-clipper left">
-        <div class="circle"></div>
-      </div><div class="gap-patch">
-        <div class="circle"></div>
-      </div><div class="circle-clipper right">
-        <div class="circle"></div>
-      </div>
-    </div>
-  </div>
+        <Spinner/>
     ) : (
         <>
         <div

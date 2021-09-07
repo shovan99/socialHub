@@ -7,6 +7,8 @@ import PostDetail from "./PostDetail"
 
 import M from "materialize-css"
 
+import Spinner from "../Spinner"
+
 const Home = () => {
   const [data , setData] = useState([]);
   const [comment , setComment] = useState("")
@@ -132,27 +134,19 @@ const Home = () => {
     
       {
         spin == true ? (
-          <div class="preloader-wrapper small active">
-            <div class="spinner-layer spinner-green-only">
-            <div class="circle-clipper left">
-                 <div class="circle"></div>
-                 </div><div class="gap-patch">
-                 <div class="circle"></div>
-            </div><div class="circle-clipper right">
-           <div class="circle"></div>
-           </div>
-           </div>
-           </div>
+           <>
+           <Spinner/>
+           </>
         ) : (
         data.map(post => (
-          <div class="card container"  style={{ maxWidth: "600px", margin: "40px auto" }}>
+          <div class="card container"  style={{ maxWidth: "600px", margin: "40px auto" , borderRadius: "20px" , border: "2px solid gray" }}>
     <div class="card-image waves-effect waves-block waves-light">
-      <img class="activator image_hi" style={{ maxHeight : "400px" }} src="http://res.cloudinary.com/shovancloudinary/image/upload/v1630169315/juye7ge5vrz04jtpnpln.jpg"/>
-      <span class="card-title"> <Link to={`/user/${post.postedBy._id}`} style={{ textDecoration: "none" , color: "inherit" }}> {post.postedBy.name} </Link> </span>
+      <img class="activator image_hi" style={{ maxHeight : "400px" , borderRadius: "20px 20px 0px 0px" }} src={post.photo}/>
     </div>
 
     <div className="card-content" style={{ display: "flex" , justifyContent: "space-between" }}>
     
+    <Link to={`/user/${post.postedBy._id}`}><h6 style={{ fontWeight: "bold" , fontFamily: "monospace" }}> {post.postedBy.name.toUpperCase()} </h6></Link>
     { post.postedBy._id === state._id && <i className="material-icons" onClick={() => deletePost(post._id)}>delete</i>  }
     {post.like.includes(state._id) ? <i class="material-icons" onClick={() => {dislikePost(post._id)}}>thumb_down</i> : <i class="material-icons" onClick={() => {likePost(post._id)}}>thumb_up</i> }
     </div>

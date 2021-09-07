@@ -15,7 +15,7 @@ const Navbar = () => {
           localStorage.clear()
           dispatch({ type: "CLEARR" })
           history.push("/login")}}
-          className="waves-effect waves-light btn"> Logout </button></li>
+          className="btn-floating btn-large waves-effect waves-light #7986cb indigo lighten-2"> <i className="material-icons">exit_to_app</i> </button></li>
         ]
       }
       else {
@@ -28,8 +28,8 @@ const Navbar = () => {
     return (
     <div className="navbar-fixed">
     <nav>
-        <div class="nav-wrapper #8c9eff indigo accent-1">
-          <Link to={state?"/":"/login"} className="brand-logo left">Logo</Link>
+        <div class="nav-wrapper #9fa8da indigo lighten-3">
+          <Link to={state?"/":"/login"} className="brand-logo left" style={{ marginLeft: "20px" , color: "#120E43" }}>socialHub</Link>
           <ul id="nav-mobile" className="right">
               {renderList()}
           </ul>

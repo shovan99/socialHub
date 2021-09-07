@@ -28,11 +28,11 @@ const CreatePost = () => {
             res.json()).then(data => {
             if( data.error ) {
                 setsSpin(false);
-                M.toast({ html: data.error })
+                M.toast({ html: data.error , classes: '#9fa8da' })
             }
             else {
                 setsSpin(false)
-                M.toast({ html: "Post Created" })
+                M.toast({ html: "Post Created" , classes: 'rounded #2e7d32 green darken-3' })
                 history.push("/")
             }
         }).catch(err=> console.log(err))
@@ -54,7 +54,7 @@ const CreatePost = () => {
         ).then(data => {
             if(data.error) {
                 setsSpin(false);
-                M.toast({ html: data.error.message })
+                M.toast({ html: data.error.message , classes: "rounded #e65100 orange darken-4" })
                 return
             }
             setUrl(data.url)

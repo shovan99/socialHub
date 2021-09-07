@@ -27,16 +27,16 @@ const Signup = () => {
     }).then(res => res.json())
     .then(data => {
       if( data.error ) {
-        M.toast({ html: data.error })
+        M.toast({ html: data.error , classes: "rounded" })
       }
       else {
-        M.toast({ html: data.message })
+        M.toast({ html: data.message , classes: "rounded #2e7d32 green darken-3" })
         history.push("/login")
       }
     })
   }
   return (
-    <div className="card card_signup #757575 grey darken-1 container">
+    <div className="card card_signup #7986cb indigo lighten-2 container">
       <div className="auth_card row container">
       <h2 className="content"> Signup Here </h2>
           <div className="row input_field">
@@ -89,7 +89,7 @@ const Signup = () => {
           </div>
         <button onClick={() => postData()} className="waves-effect waves-light btn"> Signup </button>
           <br/>
-          <small style={{ fontSize: "12px" }}> Already Have An Account? <Link to="/login"> Login Here </Link> </small>
+          <small style={{ fontSize: "12px" }}> Already Have An Account? <Link to="/login"> <span style={{ color: "blue" }}>Login Here</span> </Link> </small>
       </div>
     </div>
   );
